@@ -1,4 +1,5 @@
-RokitArduino
+Rokit for Arduino
 ============
 
-Rokit for Arduino open project
+This is a result of Rokit for Arduino Project(http://www.rokitarduino.wordpress.com)
+All right reserved Robolink(http://www.robolink.co.kr)
