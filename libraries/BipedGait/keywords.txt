@@ -1,0 +1,46 @@
+#######################################
+# Syntax Coloring Map For BipedGait
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+BipedGait	KEYWORD1
+
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+start	KEYWORD2
+stop	KEYWORD2
+process	KEYWORD2
+attach	KEYWORD2
+detach	KEYWORD2
+setMotor	KEYWORD2
+getMotor	KEYWORD2
+getAngle	KEYWORD2
+setKinematic	KEYWORD2
+setPose	KEYWORD2
+tuneSwing	KEYWORD2
+balance	KEYWORD2
+control	KEYWORD2
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+R_HIP_YAW	LITERAL1
+R_HIP_ROLL	LITERAL1
+R_HIP_PITCH	LITERAL1
+R_KNEE_PITCH	LITERAL1
+R_ANKLE_PITCH	LITERAL1
+R_ANKLE_ROLL	LITERAL1
+L_HIP_YAW	LITERAL1
+L_HIP_ROLL	LITERAL1
+L_HIP_PITCH	LITERAL1
+L_KNEE_PITCH	LITERAL1
+L_ANKLE_PITCH	LITERAL1
+L_ANKLE_ROLL	LITERAL1

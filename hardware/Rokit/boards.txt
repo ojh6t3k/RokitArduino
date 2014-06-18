@@ -1,0 +1,25 @@
+# See: http://code.google.com/p/arduino/wiki/Platforms
+
+##############################################################
+
+Ardu-X100.name = Rokit-Ardu-X100 
+Ardu-X100.upload.protocol=arduino
+Ardu-X100.upload.maximum_size=14336
+Ardu-X100.upload.speed=57600
+Ardu-X100.upload.using=USBasp
+Ardu-X100.bootloader.low_fuses=0x3f
+Ardu-X100.bootloader.high_fuses=0xc0
+Ardu-X100.bootloader.extend=0xff
+
+Ardu-X100.bootloader.path=Ardu-X100 
+Ardu-X100.bootloader.file=boot_Ardu-X100.hex
+
+Ardu-X100.bootloader.unlock_bits=0x3f
+Ardu-X100.bootloader.lock_bits=0x0ff
+Ardu-X100.build.mcu=atmega16
+Ardu-X100.build.f_cpu=16000000L
+
+Ardu-X100.build.core=atmega16
+Ardu-X100.build.variant=Ardu-X100 
+
+##############################################################
