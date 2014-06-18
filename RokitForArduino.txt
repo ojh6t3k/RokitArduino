@@ -6,11 +6,5 @@ All right reserved Robolink(http://www.robolink.co.kr)
 *v1.0.0 (2014/6/18)
 -First released.
 -New: Add Controller Ardu-X 100
--New: Add Library Dynamixel
--New: Add Library Herkulex
--New: Add Library RFRemocon
--New: Add Library TVRemocon (beta)
--New: Add Library BipedGait
--New: Add Library SineGait
--New: Add Library UnityRobot
 -New: Add Library Servo (suppert atmega16)
+-New: Add Library UnityRobot
