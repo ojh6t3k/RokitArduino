@@ -14,7 +14,7 @@
 #define DIPSW1	2               
 #define DIPSW2	3
 #define DIPSW3  4
-#define RECEIVERPIN    5   
+#define RECEIVERPIN    10   // smart servobox: 5  arduX 100 :10
 
 #define BITREADTERM    500
 #define BUTTONUPTIME   300000
