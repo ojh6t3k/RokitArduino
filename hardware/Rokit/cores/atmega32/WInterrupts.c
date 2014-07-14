@@ -107,7 +107,7 @@ void attachInterrupt(uint8_t interruptNum, void (*userFunc)(void), int mode) {
       
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
-#elif defined(__AVR_ATmega16__)
+#elif defined(__AVR_ATmega16__)|| defined(__AVR_ATmega32__)
     case 0:
     #if defined(MCUCR) && defined(ISC00) && defined(GICR)
       MCUCR = (MCUCR & ~((1 << ISC00) | (1 << ISC01))) | (mode << ISC00);
@@ -231,7 +231,7 @@ void detachInterrupt(uint8_t interruptNum) {
       EIMSK &= ~(1 << INT7);
       break;
 /////////////////////////////////////////////////////////////////////////////////////////////// 
-#elif defined(__AVR_ATmega16__)
+#elif defined(__AVR_ATmega16__)|| defined(__AVR_ATmega32__)
     case 0:
     #if defined(GICR) && defined(ISC00)
       GICR &= ~(1 << INT0); // atmega32
@@ -360,7 +360,7 @@ ISR(INT7_vect) {
 }
 /////////////////////////////////////////////////
 
-#elif defined(__AVR_ATmega16__)
+#elif defined(__AVR_ATmega16__)|| defined(__AVR_ATmega32__)
 ISR(INT0_vect) {
 	if(intFunc[EXTERNAL_INT_0])
 	intFunc[EXTERNAL_INT_0]();
