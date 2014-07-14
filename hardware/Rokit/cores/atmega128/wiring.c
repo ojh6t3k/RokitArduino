@@ -42,9 +42,9 @@ volatile unsigned long timer0_millis = 0;
 static unsigned char timer0_fract = 0;
 
 #if defined(__AVR_ATtiny24__) || defined(__AVR_ATtiny44__) || defined(__AVR_ATtiny84__)
-SIGNAL(TIM0_OVF_vect)
+ISR(TIM0_OVF_vect)
 #else
-SIGNAL(TIMER0_OVF_vect)
+ISR(TIMER0_OVF_vect)
 #endif
 {
 	// copy these to local variables so they can be stored in registers
@@ -204,6 +204,7 @@ void init()
 #if defined(__AVR_ATmega128__)
 	// CPU specific: different values for the ATmega128
 	sbi(TCCR0, CS02);
+	//sbi(TCCR0, WGM00);
 #elif defined(TCCR0) && defined(CS01) && defined(CS00)
 	// this combination is for the standard atmega8
 	sbi(TCCR0, CS01);
@@ -256,8 +257,10 @@ void init()
 #endif
 
 	// set timer 2 prescale factor to 64
-#if defined(TCCR2) && defined(CS22)
-	sbi(TCCR2, CS22);
+#if defined(TCCR2) && defined(CS21) && defined(CS20)
+	sbi(TCCR2, CS21);
+	sbi(TCCR2, CS20);
+	//sbi(TCCR2, CS21);
 #elif defined(TCCR2B) && defined(CS22)
 	sbi(TCCR2B, CS22);
 #else
