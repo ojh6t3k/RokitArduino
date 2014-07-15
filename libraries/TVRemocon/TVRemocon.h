@@ -9,9 +9,64 @@
 
 // For hunoi16 Setup
 
-#define  RECV_PIN    11
-#define  BUTTON_UP   0xFF
+#define  RECV_PIN    10
+#define  BUTTON_UP   0x00
+#define  BUTTON_DOWN 0xFF
 #define  LIMIT_TIME  200
+
+#define  ARDUX_SW1   3
+#define  ARDUX_SW2   4
+
+#define  CH1_KEY_U   0x80
+#define  CH1_KEY_D   0x40
+#define  CH1_KEY_L   0x20
+#define  CH1_KEY_R   0x10
+#define  CH1_KEY_C   0xF0
+#define  CH1_KEY_F1  0x08
+#define  CH1_KEY_F2  0x88
+#define  CH1_KEY_F3  0x48
+#define  CH1_KEY_F4  0xC8
+
+#define  CH2_KEY_U   0x8D
+#define  CH2_KEY_D   0x4D
+#define  CH2_KEY_L   0x2D
+#define  CH2_KEY_R   0x1D
+#define  CH2_KEY_C   0xFD
+#define  CH2_KEY_F1  0x04
+#define  CH2_KEY_F2  0x84
+#define  CH2_KEY_F3  0x44
+#define  CH2_KEY_F4  0xC4
+
+#define  CH3_KEY_U   0x83
+#define  CH3_KEY_D   0x43
+#define  CH3_KEY_L   0x23
+#define  CH3_KEY_R   0x13
+#define  CH3_KEY_C   0xF3
+#define  CH3_KEY_F1  0x0C
+#define  CH3_KEY_F2  0x8C
+#define  CH3_KEY_F3  0x4C
+#define  CH3_KEY_F4  0xCC
+
+#define  CH4_KEY_U   0x8B
+#define  CH4_KEY_D   0x4B
+#define  CH4_KEY_L   0x2B
+#define  CH4_KEY_R   0x1B
+#define  CH4_KEY_C   0xFB
+#define  CH4_KEY_F1  0x02
+#define  CH4_KEY_F2  0x82
+#define  CH4_KEY_F3  0x42
+#define  CH4_KEY_F4  0xC2
+
+#define  KEY_U       TVRemocon._up
+#define  KEY_D       TVRemocon._down
+#define  KEY_L       TVRemocon._left
+#define  KEY_R       TVRemocon._right
+#define  KEY_C       TVRemocon._center
+#define  KEY_F1      TVRemocon._func1
+#define  KEY_F2      TVRemocon._func2
+#define  KEY_F3      TVRemocon._func3
+#define  KEY_F4      TVRemocon._func4
+
 
 class TVRemoconClass
 {
@@ -20,8 +75,19 @@ class TVRemoconClass
 	void begin(void);
 	unsigned char receive(void);
 	unsigned int customCode(void);
+	
+	unsigned char _up;
+	unsigned char _down;
+	unsigned char _left;
+	unsigned char _right;
+	unsigned char _center;
+	unsigned char _func1;
+	unsigned char _func2;
+	unsigned char _func3;
+	unsigned char _func4;
 
   private:
+    void SWCheck(void);
 	
     
 };
