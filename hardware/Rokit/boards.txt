@@ -87,3 +87,46 @@ Ardu-X100.build.core=atmega16
 Ardu-X100.build.variant=Ardu-X100 
 
 ##############################################################
+
+Ardu-X200.name = Rokit-Ardu-X200 
+Ardu-X200.upload.protocol=arduino
+Ardu-X200.upload.maximum_size=126976
+Ardu-X200.upload.speed=57600
+Ardu-X200.upload.using=USBasp
+Ardu-X200.bootloader.low_fuses=0x3e
+Ardu-X200.bootloader.high_fuses=0x98
+Ardu-X200.bootloader.extend=0xff
+Ardu-X200.bootloader.path=ARDU-X200
+Ardu-X200.bootloader.file=ARDU-X200.hex
+Ardu-X200.bootloader.unlock_bits=0x3f
+Ardu-X200.bootloader.lock_bits=0x0f
+Ardu-X200.build.mcu=atmega128
+Ardu-X200.build.f_cpu=16000000L
+Ardu-X200.build.core=atmega128
+Ardu-X200.build.variant=Ardu-X200
+
+##############################################################
+SmartInventor-mega32.name = Rokit-SmartInventor-mega32
+
+SmartInventor-mega32.upload.protocol=arduino
+SmartInventor-mega32.upload.maximum_size=32336
+
+SmartInventor-mega32.upload.speed=57600
+
+SmartInventor-mega32.upload.using=USBasp
+SmartInventor-mega32.bootloader.low_fuses=0xc2
+SmartInventor-mega32.bootloader.high_fuses=0xbf
+SmartInventor-mega32.bootloader.extend=0xff
+
+SmartInventor-mega32.bootloader.path=SmartInventor-mega32
+SmartInventor-mega32.bootloader.file=boot_SmartInventor.hex
+
+SmartInventor-mega32.bootloader.unlock_bits=0x3f
+SmartInventor-mega32.bootloader.lock_bits=0x0bf
+
+SmartInventor-mega32.build.mcu=atmega32
+SmartInventor-mega32.build.f_cpu=16000000L
+
+SmartInventor-mega32.build.core=atmega32
+SmartInventor-mega32.build.variant=SmartInventor
+##############################################################
