@@ -9,13 +9,20 @@
 
 // For hunoi16 Setup
 
+#if defined(__AVR_ATmega128__) 
+#define  RECV_PIN    8
+#define  ARDUX_SW1  43
+#define  ARDUX_SW2  44
+#else 
 #define  RECV_PIN    10
+#define  ARDUX_SW1   3
+#define  ARDUX_SW2   4
+#endif
+
 #define  BUTTON_UP   0x00
 #define  BUTTON_DOWN 0xFF
 #define  LIMIT_TIME  200
 
-#define  ARDUX_SW1   3
-#define  ARDUX_SW2   4
 
 #define  CH1_KEY_U   0x80
 #define  CH1_KEY_D   0x40
