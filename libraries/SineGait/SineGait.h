@@ -27,9 +27,8 @@ private:
 	float _periodTime;
 	int _jointNum;
 	boolean _run;
-	boolean _stop;
-	float _time;
 	unsigned long _preMillis;
+	float _time[MAX_SINEGAIT_JOINT];
 	float _angle[MAX_SINEGAIT_JOINT];
 	float _amplitude[MAX_SINEGAIT_JOINT];
 	float _balance[MAX_SINEGAIT_JOINT];

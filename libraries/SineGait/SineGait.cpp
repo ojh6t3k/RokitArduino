@@ -74,14 +74,14 @@ void SineGait::start()
 		return;
 
 	_run = true;
-	_time = 0;
-	_stop = false;
+	for(int i=0; i<_jointNum; i++)
+		_time[i] = 0;
 	_preMillis = millis();
 }
 
 void SineGait::stop()
 {
-	_stop = true;
+	_run = false;
 }
 
 void SineGait::process()
@@ -91,32 +91,26 @@ void SineGait::process()
 
 	 // update delta time
 	unsigned long curMillis = millis();
-	_time += (float)(curMillis - _preMillis) / 1000;
+	float deltaTime = (float)(curMillis - _preMillis) / 1000;
 	_preMillis = curMillis;
 
-	if(_time > _periodTime)
-	{
-		_time = _time - _periodTime;
-		if(_stop == true)
-		{
-			_run = false;
-			_time = 0;
-		}
-	}
-
-	float timeRatio = _time / _periodTime;
 	for(int i=0; i<_jointNum; i++)
 	{
-		float jointTimeRatio = timeRatio + _phase[i];
-		if(jointTimeRatio < 0)
-			jointTimeRatio = 1 - jointTimeRatio;
-		else if(jointTimeRatio > 1)
-			jointTimeRatio = jointTimeRatio - 1;
-		_angle[i] = _amplitude[i] * sin((_speed[i] * jointTimeRatio) * 2 * M_PI);
-		if(jointTimeRatio < 0.5 && _balance[i] > 0)
-			_angle[i] *= 1 - _balance[i];
-		else if(jointTimeRatio > 0.5 && _balance[i] < 0)
-			_angle[i] *= 1 + _balance[i];
+		float jointPeriodTime = _periodTime / _speed[i];
+		_time[i] += deltaTime;
+		if(_time[i] > jointPeriodTime)
+		{
+			_time[i] -= jointPeriodTime;
+		}
+		else
+		{
+			float timeRatio = _time[i] / jointPeriodTime;
+			_angle[i] = _amplitude[i] * sin((timeRatio + _phase[i]) * 2 * M_PI);
+			if(timeRatio < 0.5 && _balance[i] > 0)
+				_angle[i] *= 1 - _balance[i];
+			else if(timeRatio > 0.5 && _balance[i] < 0)
+				_angle[i] *= 1 + _balance[i];
+		}
 	}
 }
 
