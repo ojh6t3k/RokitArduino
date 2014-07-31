@@ -124,6 +124,10 @@ public:
  
 	void  writeRegistryRAM(int servoID, int address, int writeByte);
 	void  writeRegistryEEP(int servoID, int address, int writeByte);
+	
+	void  maximumVin(int servoID, int voltage);
+	void  minimumVin(int servoID, int voltage);
+	
 
   
 // private area  

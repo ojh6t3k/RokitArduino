@@ -842,6 +842,16 @@ void HerkulexClass::writeRegistryEEP(int servoID, int address, int writeByte)
   sendData(dataEx, pSize);
 }
 
+void  HerkulexClass::maximumVin(int servoID, int voltage)
+{
+	writeRegistryRAM(servoID,0x07,voltage);
+}
+
+void  HerkulexClass::minimumVin(int servoID, int voltage)
+{
+	writeRegistryRAM(servoID,0x06,voltage);
+}
+
 
 // Private Methods //////////////////////////////////////////////////////////////
 

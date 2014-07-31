@@ -35,6 +35,10 @@ reboot		KEYWORD2
 setLed		KEYWORD2
 writeRegistryRAM KEYWORD2
 writeRegistryEEP KEYWORD2
+minimumVin	KEYWORD2
+maximumVin	KEYWORD2
+
+
 
 #######################################
 # Constants (LITERAL1)
