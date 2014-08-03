@@ -31,7 +31,7 @@ void cmdHelp()
   Serial.println(" search");
   Serial.println(" baud");  
   Serial.println(" baud [value]");  
-  Serial.println(" id [old] [new]");
+  Serial.println(" id [value]");
   Serial.println(" go [id] [pos]");
   Serial.println(" write [id] [addr] [value] [length]");
   Serial.println(" read [id] [addr] [length]");

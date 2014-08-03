@@ -104,6 +104,37 @@ void attachInterrupt(uint8_t interruptNum, void (*userFunc)(void), int mode) {
       EICRB = (EICRB & ~((1 << ISC70) | (1 << ISC71))) | (mode << ISC70);
       EIMSK |= (1 << INT7);
       break;
+      
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+#elif defined(__AVR_ATmega16__)
+    case 0:
+    #if defined(MCUCR) && defined(ISC00) && defined(GICR)
+      MCUCR = (MCUCR & ~((1 << ISC00) | (1 << ISC01))) | (mode << ISC00);
+      GICR |= (1 << INT0);
+    #else
+      #error attachInterrupt not finished for this CPU (case 0)
+    #endif
+      break;
+
+    case 1:
+    #if defined(MCUCR) && defined(ISC10) && defined(ISC11) && defined(GICR)
+      MCUCR = (MCUCR & ~((1 << ISC10) | (1 << ISC11))) | (mode << ISC10);
+      GICR |= (1 << INT1);
+    #else
+      #warning attachInterrupt may need some more work for this cpu (case 1)
+    #endif
+      break;
+      
+    case 2:
+    #if defined(MCUCSR) && defined(GICR)
+      MCUCSR = (MCUCSR & ~(1 << ISC2) );
+      GICR |= (1 << INT2);
+    #endif
+      break;     
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+      
 #else		
     case 0:
     #if defined(EICRA) && defined(ISC00) && defined(EIMSK)
@@ -199,6 +230,30 @@ void detachInterrupt(uint8_t interruptNum) {
     case 7:
       EIMSK &= ~(1 << INT7);
       break;
+/////////////////////////////////////////////////////////////////////////////////////////////// 
+#elif defined(__AVR_ATmega16__)
+    case 0:
+    #if defined(GICR) && defined(ISC00)
+      GICR &= ~(1 << INT0); // atmega32
+    #else
+      #error detachInterrupt not finished for this cpu
+    #endif
+      break;
+    case 1:
+    #if defined(GICR) && defined(INT1)
+      GICR &= ~(1 << INT1); // atmega32
+    #else
+      #warning detachInterrupt may need some more work for this cpu (case 1)
+    #endif
+      break;
+    case 2:
+    #if defined(MCUCSR) && defined(GICR)
+      GICR &= ~(1 << INT2); // atmega32
+    #else
+      #warning detachInterrupt may need some more work for this cpu (case 2)
+    #endif
+      break; 
+///////////////////////////////////////////////////////////////////////////////////////////////
 #else
     case 0:
     #if defined(EIMSK) && defined(INT0)
@@ -303,6 +358,25 @@ ISR(INT7_vect) {
   if(intFunc[EXTERNAL_INT_7])
     intFunc[EXTERNAL_INT_7]();
 }
+/////////////////////////////////////////////////
+
+#elif defined(__AVR_ATmega16__)
+ISR(INT0_vect) {
+	if(intFunc[EXTERNAL_INT_0])
+	intFunc[EXTERNAL_INT_0]();
+}
+
+ISR(INT1_vect) {
+	if(intFunc[EXTERNAL_INT_1])
+	intFunc[EXTERNAL_INT_1]();
+}
+
+ISR(INT2_vect) {
+    if(intFunc[EXTERNAL_INT_2])
+	intFunc[EXTERNAL_INT_2]();
+}
+
+/////////////////////////////////////////////////
 
 #else
 

@@ -10,8 +10,9 @@
 
 #define MAX_CMD_LENGTH  50
 #define PC_BAUD  57600 // bps
-#define HKS_BAUD  115200 // bps
+#define HKS_BAUD  0x10 // baud number
 
+int baudNum = HKS_BAUD;
 char cmdBuff[MAX_CMD_LENGTH];
 int cmdIndex = 0;
 char* cmd;
@@ -22,7 +23,7 @@ void setup()
 {
   pinMode(32, OUTPUT);
   digitalWrite(32, HIGH);
-  Herkulex.beginSerial1(HKS_BAUD);
+  Herkulex.beginSerial1(BaudnumToSpeed(baudNum));
   
   Serial.begin(PC_BAUD);
   printIntro();
@@ -56,8 +57,12 @@ void loop()
  
         if(strcmp(cmd, "help") == 0)
           cmdHelp();
+        else if(strcmp(cmd, "baud") == 0)
+          cmdBaud(arg1);
         else if(strcmp(cmd, "scan") == 0)
           cmdScan();
+        else if(strcmp(cmd, "search") == 0)
+          cmdSearch();
         else if(strcmp(cmd, "go") == 0)
           cmdGo(arg1, arg2);
         else if(strcmp(cmd, "id") == 0)

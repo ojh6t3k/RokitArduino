@@ -17,7 +17,7 @@ attachSerial	KEYWORD2
 begin	KEYWORD2
 flush	KEYWORD2
 send	KEYWORD2
-receive	KEYWORD2
+recieve	KEYWORD2
 
 
 #######################################
