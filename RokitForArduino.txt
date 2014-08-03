@@ -3,6 +3,20 @@ This is a result of Rokit for Arduino Project(http://rokitarduino.org)
 All right reserved Robolink(http://www.robolink.co.kr)
 
 [Release Note]
+*v1.0.1 (2014/8/3)
+-New: Add Controller Ardu-X 200
+-New: Add Library Dynamixel
+-New: Add Library Herkulex
+-New: Add Library IRRemocon
+-New: Add Library RFRemocon
+-New: Add Library TVRemocon
+-New: Add Library CLCD
+-New: Add Library FND
+-New: Add Library DCM
+-New: Add Library SineGait
+-New: Add ToneModule for UnityRobot
+
+
 *v1.0.0 (2014/6/18)
 -First released.
 -New: Add Controller Ardu-X 100
