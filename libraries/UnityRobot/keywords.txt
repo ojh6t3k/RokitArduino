@@ -7,11 +7,12 @@
 #######################################
 
 UnityRobot	KEYWORD1
-DigitalModule KEYWORD1
+DigitalModule	KEYWORD1
 ADCModule	KEYWORD1
 PWMModule	KEYWORD1
 ServoModule	KEYWORD1
 MotorModule KEYWORD1
+ToneModule	KEYWORD1
 WheelController	KEYWORD1
 PanTiltController	KEYWORD1
 ForceFeedback	KEYWORD1
