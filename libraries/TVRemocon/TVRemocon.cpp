@@ -29,6 +29,10 @@ TVRemoconClass::TVRemoconClass()
 	_func2 = CH1_KEY_F2;
 	_func3 = CH1_KEY_F3;
 	_func4 = CH1_KEY_F4;
+	_ch1 = CHx_KEY_CH1;
+	_ch2 = CHx_KEY_CH2;
+	_ch3 = CHx_KEY_CH3;
+	_ch4 = CHx_KEY_CH4;
 }
 
 void TVRemoconClass::begin()

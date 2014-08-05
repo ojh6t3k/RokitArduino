@@ -23,6 +23,10 @@
 #define  BUTTON_DOWN 0xFF
 #define  LIMIT_TIME  200
 
+#define  CHx_KEY_CH1  0x28
+#define  CHx_KEY_CH2  0xA8
+#define  CHx_KEY_CH3  0x68 
+#define  CHx_KEY_CH4  0xE8
 
 #define  CH1_KEY_U   0x80
 #define  CH1_KEY_D   0x40
@@ -43,6 +47,10 @@
 #define  CH2_KEY_F2  0x84
 #define  CH2_KEY_F3  0x44
 #define  CH2_KEY_F4  0xC4
+#define  CH2_KEY_C1  0x28
+#define  CH2_KEY_C2  0xA8
+#define  CH2_KEY_C3  0x68 
+#define  CH2_KEY_C4  0xE8
 
 #define  CH3_KEY_U   0x83
 #define  CH3_KEY_D   0x43
@@ -73,7 +81,10 @@
 #define  KEY_F2      TVRemocon._func2
 #define  KEY_F3      TVRemocon._func3
 #define  KEY_F4      TVRemocon._func4
-
+#define  KEY_CH1     TVRemocon._ch1
+#define  KEY_CH2     TVRemocon._ch2
+#define  KEY_CH3     TVRemocon._ch3
+#define  KEY_CH4     TVRemocon._ch4
 
 class TVRemoconClass
 {
@@ -92,6 +103,10 @@ class TVRemoconClass
 	unsigned char _func2;
 	unsigned char _func3;
 	unsigned char _func4;
+	unsigned char _ch1;
+	unsigned char _ch2;
+	unsigned char _ch3;
+	unsigned char _ch4;
 
   private:
     void SWCheck(void);
