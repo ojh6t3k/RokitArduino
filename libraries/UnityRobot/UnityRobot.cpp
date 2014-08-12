@@ -119,7 +119,10 @@ void UnityRobotClass::process(void)
 						for(int i=0; i<currentNumData; i++)
 						{
 							if(bit == 1)
+							{
 								storedData[numData] = storedData[i] << bit;
+								bit++;
+							}
 							else if(bit == 8)
 							{
 								storedData[numData] |= storedData[i];
@@ -127,10 +130,10 @@ void UnityRobotClass::process(void)
 							}
 							else
 							{
-								storedData[numData++] |= storedData[i] >> (7 - bit + 1);							
+								storedData[numData++] |= storedData[i] >> (7 - bit + 1);
 								storedData[numData] = storedData[i] << bit;
+								bit++;
 							}
-							bit++;
 						}
 
 						currentNumData = 0;
@@ -190,8 +193,8 @@ void UnityRobotClass::flush()
 			value = storedArgument[i] << (7 - bit);
 			if(i == (numArgument - 1))
 				UnityRobotSerial->write(value & 0x7F);
-		}
-		bit++;
+			bit++;
+		}		
 	}
 }
 
