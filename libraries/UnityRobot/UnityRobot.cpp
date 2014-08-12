@@ -37,6 +37,7 @@ void UnityRobotClass::begin(long speed)
 {
 	UnityRobotSerial->begin(speed);
 	readyReceived = false;
+	processUpdate = 0;
 	Reset();
 }
 
@@ -69,7 +70,7 @@ void UnityRobotClass::process(void)
 				}
 				else if(inputData == CMD_READY)
 				{
-					readyReceived = true;				
+					readyReceived = true;
 				}
 				else if(inputData == CMD_ACTION)
 				{
@@ -79,7 +80,8 @@ void UnityRobotClass::process(void)
 							(*currentCallbackAction)();
 
 						UnityRobotSerial->write(CMD_READY);
-					}				
+						processUpdate = 0;
+					}
 				}
 			
 				if(inputData == CMD_UPDATE)
@@ -332,6 +334,9 @@ boolean UnityRobotClass::pop(byte* value, byte count)
 // resets the system state upon a SYSTEM_RESET message from the host software
 void UnityRobotClass::Reset(void)
 {
+	if(processUpdate > 0)
+		UnityRobotSerial->write(CMD_READY);
+	
 	processUpdate = 0;
 	numData = 0;
 	currentNumData = 0;
