@@ -248,8 +248,6 @@ char gethex(void);
 void puthex(char);
 void flash_led(uint8_t);
 
-void start_arudux(void);
-
 /* some variables */
 union address_union {
 	uint16_t word;
@@ -294,7 +292,16 @@ int main(void)
 
 	// Check if the WDT was used to reset, in which case we dont bootload and skip straight to the code. woot.
 	if (! (ch &  _BV(EXTRF))) // if its a not an external reset...
-		start_arudux();  // skip bootloader
+{
+		//direction port
+		PORTC 	|= 	0b00100000;
+		DDRC 	|= 	0b00100000;
+		//start switch
+		LED_DDR |= 	0b00001000;
+		LED_PORT |= 	0b00001000;
+
+		app_start();  // skip bootloader
+}
 #else
 	asm volatile("nop\n\t");
 #endif
@@ -417,11 +424,16 @@ int main(void)
 			putch('P');
 			putch(0x10);
 		} else {
-			flash_led(NUM_LED_FLASHES);
 			if (++error_count == MAX_ERROR_COUNT)
-			{
-				start_arudux();
-			}
+{
+		//direction port
+		PORTC 	|= 	0b00100000;
+		DDRC 	|= 	0b00100000;
+		//start switch
+		LED_DDR |= 	0b00001000;
+		LED_PORT |= 	0b00001000;
+				app_start();
+}
 		}
 	}
 
@@ -653,11 +665,16 @@ int main(void)
 			putch(0x14);
 			putch(0x10);
 		} else {
-			flash_led(NUM_LED_FLASHES);
 			if (++error_count == MAX_ERROR_COUNT)
-			{
-				start_arudux();
-			}
+{
+		//direction port
+		PORTC 	|= 	0b00100000;
+		DDRC 	|= 	0b00100000;
+		//start switch
+		LED_DDR |= 	0b00001000;
+		LED_PORT |= 	0b00001000;
+				app_start();
+}
 		}		
 	}
 
@@ -711,11 +728,16 @@ int main(void)
 			putch(SIG3);
 			putch(0x10);
 		} else {
-			flash_led(NUM_LED_FLASHES);
 			if (++error_count == MAX_ERROR_COUNT)
-			{
-				start_arudux();
-			}
+{
+		//direction port
+		PORTC 	|= 	0b00100000;
+		DDRC 	|= 	0b00100000;
+		//start switch
+		LED_DDR |= 	0b00001000;
+		LED_PORT |= 	0b00001000;
+				app_start();
+}
 		}
 	}
 
@@ -827,8 +849,15 @@ int main(void)
 				}
 #endif
 
-				else if(ch == 'j') {			
-					start_arudux();
+				else if(ch == 'j') {
+		//direction port
+		PORTC 	|= 	0b00100000;
+		DDRC 	|= 	0b00100000;
+		//start switch
+		LED_DDR |= 	0b00001000;
+		LED_PORT |= 	0b00001000;
+
+					app_start();
 				}
 
 			} /* end of monitor functions */
@@ -839,7 +868,14 @@ int main(void)
 	/* end of monitor */
 #endif
 	else if (++error_count == MAX_ERROR_COUNT) {
-		start_arudux();
+		//direction port
+		PORTC 	|= 	0b00100000;
+		DDRC 	|= 	0b00100000;
+		//start switch
+		LED_DDR |= 	0b00001000;
+		LED_PORT |= 	0b00001000;
+
+		app_start();
 	}
 	} /* end of forever loop */
 
@@ -912,16 +948,24 @@ char getch(void)
 #if defined(__AVR_ATmega128__) || defined(__AVR_ATmega1280__)
 	uint32_t count = 0;
 	if(bootuart == 1) {
-		while(!(UCSR0A & _BV(RXC0))) 
-		{	
+		while(!(UCSR0A & _BV(RXC0))) {
 			/* 20060803 DojoCorp:: Addon coming from the previous Bootloader*/               
 			/* HACKME:: here is a good place to count times*/
-			
 			count++;
 			if (count > MAX_TIME_COUNT)
+			{
 			flash_led(NUM_LED_FLASHES);
-			
-			start_arudux();
+				if(START_SW_ON) 
+				{
+					//direction port
+					PORTC 	|= 	0b00100000;
+					DDRC 	|= 	0b00100000;
+					
+					LED_DDR |= 	0b00001000;
+					LED_PORT |= 	0b00001000;
+					app_start();
+				}
+			}
 			}
 
 			return UDR0;
@@ -932,7 +976,16 @@ char getch(void)
 			/* HACKME:: here is a good place to count times*/
 			count++;
 			if (count > MAX_TIME_COUNT)
-				start_arudux();
+{
+		//direction port
+		PORTC 	|= 	0b00100000;
+		DDRC 	|= 	0b00100000;
+		//start switch
+		LED_DDR |= 	0b00001000;
+		LED_PORT |= 	0b00001000;
+
+				app_start();
+}
 		}
 
 		return UDR1;
@@ -945,7 +998,16 @@ char getch(void)
 		/* HACKME:: here is a good place to count times*/
 		count++;
 		if (count > MAX_TIME_COUNT)
-			start_arudux();
+{
+		//direction port
+		PORTC 	|= 	0b00100000;
+		DDRC 	|= 	0b00100000;
+		//start switch
+		LED_DDR |= 	0b00001000;
+		LED_PORT |= 	0b00001000;
+
+			app_start();
+}
 	}
 	return UDR0;
 #else
@@ -956,9 +1018,15 @@ char getch(void)
 		/* HACKME:: here is a good place to count times*/
 		count++;
 		if (count > MAX_TIME_COUNT)
-		flash_led(NUM_LED_FLASHES);
-		if (count > MAX_TIME_COUNT)
-			start_arudux();
+{
+		//direction port
+		PORTC 	|= 	0b00100000;
+		DDRC 	|= 	0b00100000;
+		//start switch
+		LED_DDR |= 	0b00001000;
+		LED_PORT |= 	0b00001000;
+			app_start();
+}
 	}
 	return UDR;
 #endif
@@ -997,9 +1065,18 @@ void byte_response(uint8_t val)
 		putch(val);
 		putch(0x10);
 	} else {
-		flash_led(NUM_LED_FLASHES);
 		if (++error_count == MAX_ERROR_COUNT)
-			start_arudux();
+{
+		//direction port
+		PORTC 	|= 	0b00100000;
+		DDRC 	|= 	0b00100000;
+		//start switch
+		LED_DDR |= 	0b00001000;
+		LED_PORT |= 	0b00001000;
+
+
+			app_start();
+}
 	}
 }
 
@@ -1010,9 +1087,19 @@ void nothing_response(void)
 		putch(0x14);
 		putch(0x10);
 	} else {
-		flash_led(NUM_LED_FLASHES);
 		if (++error_count == MAX_ERROR_COUNT)
-			start_arudux();
+{
+		//direction port
+		PORTC 	|= 	0b00100000;
+		DDRC 	|= 	0b00100000;
+		//start switch
+		LED_DDR |= 	0b00001000;
+		LED_PORT |= 	0b00001000;
+
+
+
+			app_start();
+}
 	}
 }
 
@@ -1023,20 +1110,6 @@ void flash_led(uint8_t count)
 		_delay_ms(200);
 		LED_PORT &= ~_BV(LED);
 		_delay_ms(200);
-	}
-}
-
-void start_arudux(void)
-{					
-	if(START_SW_ON) 
-	{
-		//direction port
-		PORTC 	|= 	0b00100000;
-		DDRC 	|= 	0b00100000;
-		//start switch
-		LED_DDR |= 	0b00001000;
-		LED_PORT |= 	0b00001000;
-		app_start();
 	}
 }
 
