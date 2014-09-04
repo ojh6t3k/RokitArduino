@@ -1,8 +1,15 @@
+/*
+  Name: Tutorial ServoModule (Servo)
+  B/D: Ardu-X 100
+  Author: Jaehong (jhoh@robolink.co.kr)
+  Copyright (C) 2014 RoboLink.  All rights reserved.
+*/
+
 #include <UnityRobot.h>
 #include <ServoModule.h>
 #include <Servo.h>
 
-ServoModule servoModule(0, 47, -90, 90);
+ServoModule servoModule(0, 16, -90, 90);
 Servo servo;
 
 void OnUpdate(byte id)

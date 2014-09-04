@@ -1,10 +1,14 @@
+/*
+  Tested B/D: Ardu-X 200
+*/
+
 #include <Herkulex.h>
 
 void setup()  
 {
   int n=1; //set the motor ID
 
-  Herkulex.begin(115200); //open serial
+  Herkulex.beginSerial1(115200); //open serial
   Herkulex.reboot(n); //reboot first motor
   delay(500); 
   Herkulex.initialize(); //initialize motors
@@ -25,7 +29,8 @@ void setup()
   Herkulex.end();
 }
 
-void loop(){
+void loop()
+{
 }
 
 

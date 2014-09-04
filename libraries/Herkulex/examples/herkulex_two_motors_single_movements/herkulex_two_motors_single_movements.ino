@@ -1,9 +1,12 @@
+/*
+  Tested B/D: Ardu-X 200
+*/
+
 #include <Herkulex.h>
 
 void setup()  
-{
-  
-  Herkulex.begin(115200); //open serial
+{  
+  Herkulex.beginSerial1(115200); //open serial
   // Herkulex.reboot(BROADCAST_ID); //reboot all motor
   Herkulex.reboot(1); //reboot first motor
   Herkulex.reboot(2); //reboot second motor
@@ -25,7 +28,8 @@ void setup()
   Herkulex.end();
 }
 
-void loop(){
+void loop()
+{
 }
 
 

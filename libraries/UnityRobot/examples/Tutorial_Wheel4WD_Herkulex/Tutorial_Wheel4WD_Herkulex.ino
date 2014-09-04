@@ -1,3 +1,10 @@
+/*
+  Name: Tutorial Wheel4WD (Herkulex)
+  B/D: Ardu-X 200
+  Author: Jaehong (jhoh@robolink.co.kr)
+  Copyright (C) 2014 RoboLink.  All rights reserved.
+*/
+
 #include <UnityRobot.h>
 #include <WheelController.h>
 #include <Herkulex.h>

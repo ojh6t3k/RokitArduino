@@ -1,7 +1,14 @@
+/*
+  Name: Tutorial PWMModule
+  B/D: Ardu-X 100
+  Author: Jaehong (jhoh@robolink.co.kr)
+  Copyright (C) 2014 RoboLink.  All rights reserved.
+*/
+
 #include <UnityRobot.h>
 #include <PWMModule.h>
 
-PWMModule pwm(0, 16);
+PWMModule pwm(0, 11);
 
 void OnUpdate(byte id)
 {

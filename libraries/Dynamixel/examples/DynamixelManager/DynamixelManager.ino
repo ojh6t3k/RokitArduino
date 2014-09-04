@@ -9,7 +9,7 @@
 #include <Dynamixel.h>
 
 #define MAX_CMD_LENGTH  50
-#define DIR_PIN  32
+#define DIR_PIN  2
 #define DIR_TX  HIGH
 #define DIR_RX  LOW
 #define PC_BAUD  57600 // bps

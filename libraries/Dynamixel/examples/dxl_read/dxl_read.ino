@@ -1,6 +1,13 @@
+/*
+  Name: dxl_read
+  B/D: Ardu-X 200
+  Author: Jaehong (jhoh@robolink.co.kr)
+  Copyright (C) 2014 RoboLink.  All rights reserved.
+*/
+
 #include <Dynamixel.h>
 
-#define DIR_PIN  7
+#define DIR_PIN  2
 #define DIR_TX  HIGH
 #define DIR_RX  LOW
 
@@ -11,6 +18,7 @@
 
 void setup()
 {
+  Dynamixel.attachSerial(&Serial1);
   Dynamixel.attachPins(DIR_PIN, DIR_TX, DIR_RX);
   Dynamixel.begin(DXL_BAUD);
   Dynamixel.write(DXL1_ID, 24, (byte)0); // Torque disable

@@ -21,8 +21,6 @@ char* arg2;
 
 void setup()
 {
-  pinMode(32, OUTPUT);
-  digitalWrite(32, HIGH);
   Herkulex.beginSerial1(BaudnumToSpeed(baudNum));
   
   Serial.begin(PC_BAUD);

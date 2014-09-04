@@ -1,5 +1,5 @@
 /*
-  Name: Biped Gait Tunner
+  Name: Biped Gait Tunner (Herkulex)
   B/D: Ardu-X 200
   Author: Jaehong (jhoh@robolink.co.kr)
   Copyright (C) 2014 RoboLink.  All rights reserved.
@@ -65,8 +65,6 @@ void setup()
   BipedGait.setMotor(L_ANKLE_ROLL, 512, 3.39, -1);
   UpdateParameters();
   
-  pinMode(32, OUTPUT);
-  digitalWrite(32, HIGH);
   Herkulex.beginSerial1(115200);
   Herkulex.reboot(BROADCAST_ID);
   delay(500);

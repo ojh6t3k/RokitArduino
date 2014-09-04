@@ -1,3 +1,10 @@
+/*
+  Name: Tutorial MyModule
+  B/D: Any Board
+  Author: Jaehong (jhoh@robolink.co.kr)
+  Copyright (C) 2014 RoboLink.  All rights reserved.
+*/
+
 #include <UnityRobot.h>
 
 class MyModule

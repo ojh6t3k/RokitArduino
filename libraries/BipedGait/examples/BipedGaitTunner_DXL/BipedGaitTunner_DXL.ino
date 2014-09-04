@@ -1,3 +1,10 @@
+/*
+  Name: Biped Gait Tunner (Dynamixel)
+  B/D: Ardu-X 200
+  Author: Jaehong (jhoh@robolink.co.kr)
+  Copyright (C) 2014 RoboLink.  All rights reserved.
+*/
+
 #include <Ansiterm.h>
 #include <BipedGait.h>
 #include <Dynamixel.h>
@@ -59,7 +66,7 @@ void setup()
   BipedGait.setMotor(L_ANKLE_ROLL, 512, 3.413, 1);
   UpdateParameters();
   
-  Dynamixel.attachPins(32, HIGH, LOW);
+  Dynamixel.attachPins(2, HIGH, LOW);
   Dynamixel.attachSerial(&Serial1);
   Dynamixel.begin(1000000);
   

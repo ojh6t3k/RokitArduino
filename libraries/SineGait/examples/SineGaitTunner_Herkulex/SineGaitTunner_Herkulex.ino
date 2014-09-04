@@ -1,5 +1,5 @@
 /*
-  Name: SineGait Tunner
+  Name: SineGait Tunner (Herkulex)
   B/D: Ardu-X 200
   Author: Jaehong (jhoh@robolink.co.kr)
   Copyright (C) 2014 RoboLink.  All rights reserved.

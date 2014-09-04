@@ -1,7 +1,14 @@
+/*
+  Name: Tutorial DigitalModule
+  B/D: Ardu-X 100
+  Author: Jaehong (jhoh@robolink.co.kr)
+  Copyright (C) 2014 RoboLink.  All rights reserved.
+*/
+
 #include <UnityRobot.h>
 #include <DigitalModule.h>
 
-DigitalModule digital(0, 47);
+DigitalModule digital(0, 8);
 
 void OnUpdate(byte id)
 {
