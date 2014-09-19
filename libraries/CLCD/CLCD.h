@@ -97,10 +97,6 @@ private:
 	int _rck;
 	int _sck;
 
-	int _siPort;
-	int _rckPort;
-	int _sckPort;
-	
 	int EntryBuffer;	//Entry buffer
 	int DisplayBuffer;	//Command buffer
 	int ClcdBuffer;		//clcd buffer

@@ -6,30 +6,28 @@
 #include "CLCD.h"
 #include "Arduino.h"
 
-volatile uint8_t *siPort;
-volatile uint8_t *rckPort;
-volatile uint8_t *sckPort;
- 
-void CLCDClass::write595(unsigned int data)
+ void CLCDClass::write595(unsigned int data)
 {
-	unsigned char i=7;
 	
-	*siPort &= ~digitalPinToBitMask(_si);
-	*sckPort &= ~digitalPinToBitMask(_sck);
-	*rckPort &= ~digitalPinToBitMask(_rck);
-	
-	while(i<=7)
-	{
-	if((data>> i) & 0x01) *siPort |=  digitalPinToBitMask(_si);
-	else *siPort &= ~digitalPinToBitMask(_si);
-	*sckPort |=  digitalPinToBitMask(_sck);
-	*sckPort &= ~digitalPinToBitMask(_sck);
-	i--;
-	}
-	*rckPort |=  digitalPinToBitMask(_rck);
-	*rckPort &= ~digitalPinToBitMask(_rck);
-}
+  unsigned char i=7;
 
+  digitalWrite(_si, LOW);
+  digitalWrite(_sck, LOW);
+  digitalWrite(_rck, LOW);
+  
+  while(i<=7)
+  {
+    if((data>> i) & 0x01) digitalWrite(_si,HIGH);  
+    else digitalWrite(_si, LOW);
+    digitalWrite(_sck, HIGH);
+    digitalWrite(_sck, LOW);
+    i--;
+  }
+  digitalWrite(_rck, HIGH);
+  digitalWrite(_rck, LOW);
+
+}
+ 
 void CLCDClass::Control(unsigned char command) //control command
 {
 	delay(1);
@@ -72,12 +70,6 @@ void CLCDClass::begin(int pin1 ,int pin2,int pin3) //LCD initialize
 	_rck  = pin2;	//latch
 	_sck  = pin3;	//shift
 	
-	siPort = portOutputRegister(digitalPinToPort(_si)); 
-	rckPort = portOutputRegister(digitalPinToPort(_rck)); 
-	sckPort = portOutputRegister(digitalPinToPort(_sck)); 
-	
-	///////////////////////////
-
 	pinMode(_si,OUTPUT); 
 	pinMode(_rck,OUTPUT); 
 	pinMode(_sck,OUTPUT); 

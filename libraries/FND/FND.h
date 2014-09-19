@@ -31,10 +31,6 @@ private:
 	int _rck;
 	int _sck;
 
-	int _siPort;
-	int _rckPort;
-	int _sckPort;
-
 	unsigned char FND_data[4];
 	unsigned char FND_Count;	//fnd 출력 자릿수 컨트롤
 	void write595(unsigned int data);

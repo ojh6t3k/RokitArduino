@@ -12,7 +12,7 @@ void setup() {
 
 void loop() {
   int sensorVal = digitalRead(InputSwitch);
-  char time = (millis()/1000);
+  unsigned long time = (millis()/1000);
 
   if (time > CheckTime)
   {
